@@ -2,11 +2,11 @@
   <div>{{ text }}</div>
 </template>
 <script setup lang="ts">
-type BtnProps={
+type PriceProps={
   text:string
 }
 
-defineProps<BtnProps>()
+defineProps<PriceProps>()
 </script>
 
 <style lang="less" scoped>

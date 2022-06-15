@@ -1,8 +1,8 @@
 import { createApp } from "vue";
-import Button from "./src/index.vue";
+import Price from "./src/index.vue";
 
 const InitButton = (el: string) => {
-    const app=createApp(Button,{
+    const app=createApp(Price,{
         text:"我是一个测试"
     });
     app.mount(el)
