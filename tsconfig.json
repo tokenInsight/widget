@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    // "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "sourceMap": true,
+    // "resolveJsonModule": true,
+    // "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "jsx": "preserve",
+    "noImplicitAny": true,  // 禁止any类型
+    "noUnusedLocals": false,//查未使用的局部变量
+    "declaration": true, // 生成相应的.d.ts文件
+    "baseUrl": ".", // 解析非相对模块地址，默认是当前目录
+    "outDir": "./lib", // 打包输出路径
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
