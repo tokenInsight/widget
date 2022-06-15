@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import dts from "vite-plugin-dts";
 import VueSetupExtend from "vite-plugin-vue-setup-extend";
+const { babel } = require('@rollup/plugin-babel')
 
 export default defineConfig({
   // 需要安装babel
@@ -16,5 +17,12 @@ export default defineConfig({
       fileName: "TokenInsightWidget",
       formats: [ "umd" ],
     },
+    rollupOptions: {
+      plugins: [
+        babel({
+          babelHelpers: 'bundled'
+        })
+      ],
+    }
   },
 });
