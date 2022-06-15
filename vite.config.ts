@@ -8,6 +8,7 @@ export default defineConfig({
   // 需要安装babel
   plugins: [ vue(), VueSetupExtend(), dts() ],
   build: {
+    target:"es2015",
     outDir: "lib",
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
