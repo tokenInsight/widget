@@ -1,11 +1,16 @@
-import { createApp } from "vue";
-import Price from "./src/index.vue";
+import { createApp } from 'vue';
+import Price from './src/index.vue';
 
-const createPrice = (el: string) => {
-    const app=createApp(Price,{
-        text:"我是一个测试"
-    });
-    app.mount(el)
+type priceParams = {
+  el: string;
 };
+
+const createPrice = (params: priceParams) => {
+  const app = createApp(Price, {
+    text: '我是一个测试'
+  });
+  app.mount(params.el);
+};
+export type { priceParams };
 
 export default createPrice;
