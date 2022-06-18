@@ -16,6 +16,7 @@
     "test": "cross-env NODE_ENV=test jest"
   },
   "dependencies": {
+    "babel-jest": "26",
     "less": "^4.1.2",
     "vue": "^3.2.25"
   },
@@ -30,6 +31,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/compiler-sfc": "^3.2.37",
     "@vue/eslint-config-typescript": "^11.0.0",
+    "@vue/test-utils": "2.0.0-rc.18",
     "babel-core": "7.0.0-bridge.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.17.0",

@@ -1,21 +1,21 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div id="btc"></div>
 </template>
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import TokenInsightWidget from './index';
+onMounted(() => {
+  const widget = new TokenInsightWidget('cec31bc1-b8d9-4c93-8c38-aaf740793101');
+  widget.createPrice({
+    el: '#btc',
+    tid: 'bitcoin'
+  });
+});
 
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#btc {
+  width: 500px;
+  height: 300px;
 }
 </style>

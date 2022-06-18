@@ -35,7 +35,8 @@ module.exports = {
         'space-infix-ops': 2,
         'no-irregular-whitespace': 2, // 不规则的空白不允许
         'vue/html-self-closing': 'off',
-        'vue/max-attributes-per-line': 'off'
+        'vue/max-attributes-per-line': 'off',
+        'vue/require-default-prop':"off"
       }
     },
     {

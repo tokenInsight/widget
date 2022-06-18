@@ -9,10 +9,15 @@
     <script src="../lib/TokenInsightWidget.umd.js"></script>
   </head>
   <body>
-    <div id="buttonWidget"></div>
+    <div id="btc"></div>
     <div id="buttonWidget1"></div>
     <script>
-     console.log(TokenInsightWidget)
+      const widget = new TokenInsightWidget('cec31bc1-b8d9-4c93-8c38-aaf740793101');
+
+      widget.createPrice({
+        el: '#btc',
+        tid: 'bitcoin'
+      });
     </script>
   </body>
 </html>
