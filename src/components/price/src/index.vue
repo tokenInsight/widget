@@ -12,7 +12,7 @@
       <div class="ti-coin-price-wrapper">
         <span class="ti-coin-price">${{ coinPrice.price }}</span>
         <div class="ti-coin-changes">
-          <span :class="coinPrice.change24 > 0 ? 'green' : 'red'">{{ coinPrice.change24 }}%</span>
+          <span class="ti-coin-change24" :class="coinPrice.change24 > 0 ? 'green' : 'red'">{{ coinPrice.change24 }}%</span>
           <span>24H</span>
         </div>
       </div>
@@ -48,7 +48,7 @@ const bgColor = computed(() => {
 onMounted(async () => {
   try {
     const res = await props.request.get(`https://api.tokeninsight.com/api/v1/coins/${props.tid}`);
-    if (res.status.code === 0) {
+    if (res?.status.code === 0) {
       logo.value = res.data.logo;
       name.value = res.data.name;
       symbol.value = res.data.symbol;
