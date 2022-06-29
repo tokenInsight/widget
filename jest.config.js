@@ -12,7 +12,7 @@ module.exports = {
     testEnvironment: 'jest-environment-jsdom',
     testPathIgnorePatterns: ['/node_modules/'],
     collectCoverage: true,
-    collectCoverageFrom: ['src/**/*.vue','src/**/*.(ts|tsx)','!src/*.{ts,vue}','!**/node_modules/**'],
+    collectCoverageFrom: ['src/**/*.vue','src/**/*.(ts|tsx)','!src/*.{ts,vue}','!**/node_modules/**','!src/request/index.ts','!src/**/index.ts'],
     coverageDirectory: 'coverage',
     coverageThreshold:{
       'global': {
