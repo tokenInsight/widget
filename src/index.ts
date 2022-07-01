@@ -1,4 +1,4 @@
-import HttpRequest, { HttpRequestType } from './request/index';
+import HttpRequest, { HttpRequestType } from './request';
 import createPrice from './components/price';
 import { PriceType } from './components/price';
 
