@@ -1,16 +1,15 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import path from 'path';
+const createDocPlugin = require('./build/vite-plugin-doc');
+
 export default defineConfig({
-    // 需要安装babel
-    plugins: [vue()],
-    build: {
-        outDir: 'lib',
-        lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'),
-            name: 'TokenInsightWidget',
-            fileName: 'TokenInsightWidget',
-            formats: ['es', 'umd']
-        }
-    }
+  plugins: [
+    createDocPlugin(),
+    vue({
+      include: [ /\.vue$/, /\.md$/ ]
+    })
+  ],
+  build: {
+    outDir: 'site'
+  }
 });

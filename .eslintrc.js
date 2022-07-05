@@ -6,7 +6,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: '*.vue',
+      files: [ '*.vue', '*.js' ],
       extends: [ 'plugin:vue/vue3-recommended', '@vue/typescript/recommended' ],
       rules: {
         'vue/multi-word-component-names': 'off',
@@ -36,12 +36,12 @@ module.exports = {
         'no-irregular-whitespace': 2, // 不规则的空白不允许
         'vue/html-self-closing': 'off',
         'vue/max-attributes-per-line': 'off',
-        'vue/require-default-prop':"off"
+        'vue/require-default-prop': 'off'
       }
     },
     {
-      files: ['*.ts', '*.tsx'],
-      extends: [ 'eslint:recommended', 'plugin:@typescript-eslint/eslint-recommended',"plugin:@typescript-eslint/recommended" ],
+      files: [ '*.ts', '*.tsx' ],
+      extends: [ 'eslint:recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended' ],
       rules: {
         'no-var': 'error',
         'vue/no-unused-vars': 'error',
@@ -66,7 +66,7 @@ module.exports = {
           }
         ],
         'space-infix-ops': 2,
-        'no-irregular-whitespace': 2, // 不规则的空白不允许
+        'no-irregular-whitespace': 2 // 不规则的空白不允许
       }
     }
   ]
