@@ -12,7 +12,8 @@
       <div class="ti-coin-price-wrapper">
         <span class="ti-coin-price">${{ coinPrice.price }}</span>
         <div class="ti-coin-changes">
-          <span class="ti-coin-change24" :class="coinPrice.change24 > 0 ? 'green' : 'red'">{{ coinPrice.change24 }}%</span>
+          <span class="ti-coin-change24" :class="coinPrice.change24 > 0 ? 'green' : 'red'">{{ coinPrice.change24
+          }}%</span>
           <span>24H</span>
         </div>
       </div>

@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    // "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "sourceMap": true,
-    // "resolveJsonModule": true,
-    // "isolatedModules": true,
     "esModuleInterop": true,
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
