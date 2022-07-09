@@ -1,28 +1,17 @@
-type WidgetName = "CoinTicker" | "CoinMarket" | "CoinPrice";
-import InitButton from "./components/button/index";
-
-type params = { widgetName: WidgetName; el: string };
+import HttpRequest, { HttpRequestType } from './request';
+import createPrice from './components/price';
+import { PriceType } from './components/price';
 
 class TokenInsightWidget {
-  widgetName: string;
-  el: string;
-  constructor({ widgetName, el }: params) {
-    this.widgetName = widgetName;
-    this.el = el;
+  key: string;
+  request: HttpRequestType;
+
+  constructor(key: string) {
+    this.key = key;
+    this.request = new HttpRequest(this.key);
   }
-  // TODO
-  initWidget() {
-    switch (this.widgetName) {
-      case "CoinTicker":
-        InitButton(this.el);
-        return;
-      case "CoinMarket":
-        return;
-      case "CoinPrice":
-        return;
-      default:
-        return "";
-    }
+  createPrice(params: PriceType) {
+    createPrice(params, this.request);
   }
 }
 
