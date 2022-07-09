@@ -1,8 +1,10 @@
+const hljs = require('highlight.js');
 const { marked } = require('marked');
 
 module.exports = function transformMd(code, path) {
   console.log(path);
   const tokens = marked.lexer(code);
+  console.log(tokens);
   const titleIndex = tokens.findIndex((token)=>token.type === 'heading' && token.depth === 1);
   let jsCode = '';
   if (titleIndex > -1){
@@ -15,10 +17,11 @@ module.exports = function transformMd(code, path) {
       });
   }
 
-  const codeIndex = tokens.findIndex((token)=>token.type === 'code');
+  const codeIndex = tokens.findIndex((token)=>token.type === 'code' && token.lang === 'js');
 
   if (codeIndex > -1){
     jsCode = JSON.stringify(tokens[codeIndex].text);
+    console.log(hljs);
   }
 
   const docMainTemplate = marked.parser(tokens);
