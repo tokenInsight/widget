@@ -2,7 +2,7 @@
   <div class="ti-price-container" :style="bgColor">
     <a href="https://www.tokeninsight.com/en/coins/bitcoin/overview" target="_blank">
       <div class="ti-price-wrapper">
-        <img v-if="logo" class="ti-price-logo" :src="logo" alt="">
+        <img v-if="logo" class="ti-price-logo" :src="logo" alt="" />
         <span v-else class="ti-price-logo"></span>
         <div class="ti-price-name">
           <span class="symbol">{{ symbol }}</span>
@@ -12,8 +12,7 @@
       <div class="ti-coin-price-wrapper">
         <span class="ti-coin-price">${{ coinPrice.price }}</span>
         <div class="ti-coin-changes">
-          <span class="ti-coin-change24" :class="coinPrice.change24 > 0 ? 'green' : 'red'">{{ coinPrice.change24
-          }}%</span>
+          <span class="ti-coin-change24" :class="coinPrice.change24 > 0 ? 'green' : 'red'">{{ coinPrice.change24 }}%</span>
           <span>24H</span>
         </div>
       </div>
@@ -33,8 +32,8 @@ const coinPrice = reactive({
 });
 
 interface Props {
-  tid?: string;
-  backgroundColor?: string;
+  tid?: string
+  backgroundColor?: string
   request: HttpRequestType
 }
 
@@ -54,7 +53,7 @@ onMounted(async () => {
       name.value = res.data.name;
       symbol.value = res.data.symbol;
       if (res.data.market_data.price.length > 0) {
-        coinPrice.price = (res.data.market_data.price[0].price_latest).toFixed(2);
+        coinPrice.price = res.data.market_data.price[0].price_latest.toFixed(2);
         const change24 = (res.data.market_data.price[0].price_change_percentage_24h * 100).toFixed(2);
         coinPrice.change24 = Number(change24);
       }
@@ -63,11 +62,6 @@ onMounted(async () => {
     console.log(error);
   }
 });
-
-
-
-
-
 </script>
 
 <style lang="less" scoped>

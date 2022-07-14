@@ -1,37 +1,38 @@
 const hljs = require('highlight.js');
 const { marked } = require('marked');
 
-module.exports = function transformMd(code, path) {
-  console.log(path);
+module.exports = function transformMd(code) {
   const tokens = marked.lexer(code);
-  console.log(tokens);
-  const titleIndex = tokens.findIndex((token)=>token.type === 'heading' && token.depth === 1);
   let jsCode = '';
-  if (titleIndex > -1){
-    const title = JSON.stringify(tokens[titleIndex].text);
-    const titleTemplate = `<h1 v-html='${title}'></h1>`;
-    tokens.splice(titleIndex, 1, {
-        type: 'html',
-        pre: false,
-        text: titleTemplate
-      });
+  let jsCodeText = '';
+  let htmlCodeText = '';
+
+  const codeIndex = tokens.findIndex(token => token.type === 'code' && token.lang === 'js');
+
+  if (codeIndex > -1) {
+    jsCodeText = hljs.highlight(tokens[codeIndex].text, { language: 'js' }).value;
+    jsCode = JSON.stringify(tokens[codeIndex].text);
+    tokens.splice(codeIndex, 1);
   }
 
-  const codeIndex = tokens.findIndex((token)=>token.type === 'code' && token.lang === 'js');
+  const htmlIndex = tokens.findIndex(token => token.type === 'code' && token.lang === 'html');
 
-  if (codeIndex > -1){
-    jsCode = JSON.stringify(tokens[codeIndex].text);
-    console.log(hljs);
+  if (htmlIndex > -1) {
+    htmlCodeText = tokens[htmlIndex].text;
+    tokens.splice(htmlIndex, 1);
   }
 
   const docMainTemplate = marked.parser(tokens);
 
   const docTemplate = `
     <template>
-    <div class="doc">
-       ${docMainTemplate}
-       <div id='btc'></div>
-    </div>
+      <div class="doc">
+        ${docMainTemplate}
+        ${htmlCodeText}
+        <div class='pre-js'>
+          <pre>${jsCodeText}</pre>
+        </div>
+      </div>
     </template>
     <script setup>
     import { onMounted } from 'vue';
@@ -43,5 +44,4 @@ onMounted(()=>{
 </script>
   `;
   return docTemplate;
-
 };

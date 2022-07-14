@@ -11,3 +11,8 @@ widget.createPrice({
   tid: 'bitcoin'
 });
 ```
+
+
+```html
+<div id='btc' class='m-20'></div>
+```

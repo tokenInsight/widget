@@ -1,1 +1,0 @@
-import{_ as o,r,o as t,c as n,a,F as c,b as s}from"./index.0106e664.js";const _={},l=s("div",null,"\u6211\u662F\u4E00\u4E2A\u7236\u7EC4\u4EF6",-1);function d(i,m){const e=r("router-view");return t(),n(c,null,[l,a(e)],64)}var f=o(_,[["render",d]]);export{f as default};

@@ -4,6 +4,7 @@ import './assets/css/common.css';
 import './assets/TokenInsightWidget.umd';
 import './assets/style.css';
 import App from './App.vue';
+import 'highlight.js/styles/github.css';
 
 const app = createApp(App);
 
