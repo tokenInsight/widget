@@ -29,7 +29,7 @@ module.exports = function transformMd(code) {
       <div class="doc">
         ${docMainTemplate}
         ${htmlCodeText}
-        <div class='pre-js'>
+        <div class='pre-js' v-if='jsCodeText'>
           <pre>${jsCodeText}</pre>
         </div>
       </div>
