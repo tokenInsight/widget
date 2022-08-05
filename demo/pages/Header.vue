@@ -6,10 +6,10 @@
       </div>
       <div class="nav-menu">
         <router-link to="/">
-          首页
+          Home
         </router-link>
         <router-link to="/docs/introduction">
-          文档
+          Docs
         </router-link>
       </div>
       <div class="nav-menu-right">

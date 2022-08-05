@@ -1,6 +1,6 @@
 const menus = [
   {
-    zh: '介绍',
+    zh: 'Introduction',
     type: 'group',
     children: [
       {
@@ -10,7 +10,7 @@ const menus = [
     ]
   },
   {
-    zh: '组件',
+    zh: 'Components',
     type: 'group',
     children: [
       {
