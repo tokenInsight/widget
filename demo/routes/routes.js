@@ -17,6 +17,10 @@ const routes = [
       {
         path: 'price',
         component: () => import('../../src/components/price/docs/index.md')
+      },
+      {
+        path: 'watch',
+        component: () => import('../../src/components/watch/docs/index.md')
       }
     ]
   }

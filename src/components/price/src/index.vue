@@ -23,6 +23,12 @@
 import { HttpRequestType } from 'src/request';
 import { computed, onMounted, ref, reactive } from 'vue';
 
+interface Props {
+  tid?: string
+  backgroundColor?: string
+  request: HttpRequestType
+}
+
 const logo = ref('');
 const name = ref('-');
 const symbol = ref('-');
@@ -30,12 +36,6 @@ const coinPrice = reactive({
   price: '-',
   change24: 0
 });
-
-interface Props {
-  tid?: string
-  backgroundColor?: string
-  request: HttpRequestType
-}
 
 const props = withDefaults(defineProps<Props>(), {
   backgroundColor: 'rgba(123, 97, 255, 0.05)'
