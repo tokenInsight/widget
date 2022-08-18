@@ -1,4 +1,0 @@
-import{i as a,o as c,a as t,j as e}from"./index.e72b5e87.js";const n={class:"doc"},i=e(`<h1 id="coinwatch">CoinWatch</h1><p>Top10</p><h2 id="\u6F14\u793A">\u6F14\u793A</h2><div id="watch" class="m-20"></div><div class="pre-js"><pre><span class="hljs-keyword">const</span> widget = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TokenInsightWidget</span>(<span class="hljs-string">&#39;cec31bc1-b8d9-4c93-8c38-aaf740793101&#39;</span>);
-widget.<span class="hljs-title function_">createWatch</span>({
-  <span class="hljs-attr">el</span>: <span class="hljs-string">&#39;#watch&#39;</span>,
-});</pre></div>`,5),o=[i],h={name:"index",setup(d){return a(()=>{new TokenInsightWidget("cec31bc1-b8d9-4c93-8c38-aaf740793101").createWatch({el:"#watch"})}),(s,l)=>(c(),t("div",n,o))}};export{h as default};
