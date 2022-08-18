@@ -28,7 +28,9 @@ module.exports = function transformMd(code) {
     <template>
       <div class="doc">
         ${docMainTemplate}
-        <Colors @change='change' />
+        ${
+          jsCodeText && `  <Colors @change='change' />`
+        }
         ${htmlCodeText}
         ${
           jsCodeText && ` <div class='pre-js'>
@@ -45,10 +47,16 @@ onMounted(()=>{
   ${eval(jsCode)}
 });
 
-const change=(newVal)=>{
-  const js=${jsCode}.replace('bitcoin', newVal)
-  eval(js)
+${
+  jsCodeText && `
+  const change=(newVal)=>{
+    const js=${jsCode}.replace('bitcoin', newVal)
+    eval(js)
+  }`
 }
+
+
+
  
 </script>
   `;
