@@ -45,8 +45,8 @@ onMounted(()=>{
   ${eval(jsCode)}
 });
 
-const change=(newVal,oldVal)=>{
-  const js=${jsCode}.replace(oldVal, newVal)
+const change=(newVal)=>{
+  const js=${jsCode}.replace('bitcoin', newVal)
   eval(js)
 }
  
