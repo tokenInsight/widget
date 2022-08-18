@@ -1,0 +1,1 @@
+import{i as t,o,a as s,b as e}from"./index.e72b5e87.js";const c={class:"doc"},n=e("h1",{id:"widget"},"Widget",-1),a=e("p",null,"\u8FD9\u662F\u4E00\u4E2AWidget",-1),d=[n,a],p={name:"index",setup(_){return t(()=>{}),(i,r)=>(o(),s("div",c,d))}};export{p as default};

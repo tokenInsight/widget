@@ -1,6 +1,6 @@
 <template>
   <div class="ti-price-container" :style="bgColor">
-    <a href="https://www.tokeninsight.com/en/coins/bitcoin/overview" target="_blank">
+    <a :href="`https://www.tokeninsight.com/en/coins/${id}/overview`" target="_blank">
       <div class="ti-price-wrapper">
         <img v-if="logo" class="ti-price-logo" :src="logo" alt="" />
         <span v-else class="ti-price-logo"></span>
@@ -21,14 +21,16 @@
 </template>
 <script setup lang="ts" name="Price">
 import { HttpRequestType } from 'src/request';
+import { CoinDetail } from 'src/types';
 import { computed, onMounted, ref, reactive } from 'vue';
 
 interface Props {
-  tid?: string
-  backgroundColor?: string
-  request: HttpRequestType
+  tid?: string;
+  backgroundColor?: string;
+  request: HttpRequestType;
 }
 
+const id = ref('');
 const logo = ref('');
 const name = ref('-');
 const symbol = ref('-');
@@ -47,8 +49,9 @@ const bgColor = computed(() => {
 
 onMounted(async () => {
   try {
-    const res = await props.request.get(`https://api.tokeninsight.com/api/v1/coins/${props.tid}`);
-    if (res?.status.code === 0) {
+    const res = await props.request.get<CoinDetail>(`https://api.tokeninsight.com/api/v1/coins/${props.tid}`);
+    if (res.status.code === 0) {
+      id.value = res.data.id;
       logo.value = res.data.logo;
       name.value = res.data.name;
       symbol.value = res.data.symbol;

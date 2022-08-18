@@ -1,5 +1,6 @@
 import HttpRequest, { HttpRequestType } from './request';
 import createPrice from './components/price';
+import createWatch from './components/watch';
 import { PriceType } from './components/price';
 
 class TokenInsightWidget {
@@ -12,6 +13,9 @@ class TokenInsightWidget {
   }
   createPrice(params: PriceType) {
     createPrice(params, this.request);
+  }
+  createWatch(params: PriceType) {
+    createWatch(params, this.request);
   }
 }
 
