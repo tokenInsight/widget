@@ -5,7 +5,10 @@ import './assets/TokenInsightWidget.umd';
 import './assets/style.css';
 import App from './App.vue';
 import 'highlight.js/styles/github.css';
+import Colors from './pages/Colors.vue';
 
 const app = createApp(App);
+
+app.component('Colors', Colors);
 
 app.use(router).mount('#app');
