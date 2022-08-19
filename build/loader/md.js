@@ -29,7 +29,7 @@ module.exports = function transformMd(code) {
       <div class="doc">
         ${docMainTemplate}
         ${
-          jsCodeText && `  <Colors @change='change' />`
+          jsCodeText && `  <select-coin @change='change' />`
         }
         ${htmlCodeText}
         ${

@@ -5,10 +5,10 @@ import './assets/TokenInsightWidget.umd';
 import './assets/style.css';
 import App from './App.vue';
 import 'highlight.js/styles/github.css';
-import Colors from './pages/Colors.vue';
+import SelectCoin from './pages/SelectCoin.vue';
 
 const app = createApp(App);
 
-app.component('Colors', Colors);
+app.component('SelectCoin', SelectCoin);
 
 app.use(router).mount('#app');
