@@ -7,12 +7,6 @@
       </li>
     </ul>
   </div>
-
-  <!-- <select v-model="selectValue">
-    <option v-for="(item, index) in selectList.list" :key="index" :value="item['id']">
-      {{ item['name'] }}
-    </option>
-  </select> -->
 </template>
 
 <script setup lang="ts">
