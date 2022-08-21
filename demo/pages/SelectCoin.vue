@@ -1,8 +1,13 @@
 <template>
-  <div class="selection-container" @click="showSelectiion=true">
-    {{ cuurentSelect }}
-    <ul v-show="showSelectiion" class="selection-body">
-      <li v-for="(item, index) in selectList.list" :key="index" @click.stop="change(item)">
+  <div class="selection-container" @click.stop="showSelectiion = true">
+    <div v-if="!cuurentSelect" class="selection-placeholder">
+      Choose
+    </div>
+    <div v-else class="selection-content">
+      {{ cuurentSelect }}
+    </div>
+    <ul v-show="showSelectiion" ref="selectRef" class="selection-body">
+      <li v-for="(item, index) in selectList.list" :key="index" :class="{ act: cuurentSelect === item['name'] }" @click.stop="change(item)">
         {{ item['name'] }}
       </li>
     </ul>
@@ -14,17 +19,26 @@ import { reactive, ref, onMounted } from 'vue';
 
 const selectList = reactive({ list: [] });
 
-const cuurentSelect = ref('请选择');
+const cuurentSelect = ref('');
+
+const selectRef = ref(null);
 
 const showSelectiion = ref(false);
 
-const change = (item)=>{
-   emit('change', item['id']);
-   showSelectiion.value = false;
-   cuurentSelect.value = item['name'];
+const change = (item) => {
+  emit('change', item['id']);
+  showSelectiion.value = false;
+  cuurentSelect.value = item['name'];
+};
+
+const bodyCloseMenus = (e) => {
+  if (!selectRef.value.contains(e.target)){
+    showSelectiion.value = false;
+  }
 };
 
 onMounted(() => {
+  document.addEventListener('click', bodyCloseMenus);
   const options = {
     method: 'GET',
     headers: { Accept: 'application/json', TI_API_KEY: 'cec31bc1-b8d9-4c93-8c38-aaf740793101' }
@@ -36,14 +50,15 @@ onMounted(() => {
       selectList.list = response.data;
     })
     .catch((err) => console.error(err));
+  // return ()=>{
+  //   document.removeEventListener('click', bodyCloseMenus);
+  // };
 });
 
 const emit = defineEmits([ 'change' ]);
-
 </script>
 
 <style lang="less" scoped>
-
 .selection-container {
   width: 404px;
   height: 34px;
@@ -53,9 +68,16 @@ const emit = defineEmits([ 'change' ]);
   align-items: center;
   box-sizing: border-box;
   padding-left: 10px;
-  color: #ccc;
   cursor: pointer;
   position: relative;
+  transition: all 0.3s;
+
+  &:hover{
+    border-color: #5334ab;
+  }
+  .selection-placeholder {
+    color: #ccc;
+  }
   .selection-body {
     width: 404px;
     height: 300px;
@@ -78,9 +100,13 @@ const emit = defineEmits([ 'change' ]);
       padding-left: 10px;
       color: #000;
       transition: all 0.3s;
-      &:hover{
+      &:hover {
         background: #efefef;
+        color: #5334ab;
       }
+    }
+    .act {
+      background: #efefef;
     }
   }
 }
