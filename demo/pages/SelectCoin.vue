@@ -15,13 +15,13 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted } from 'vue';
+import { reactive, ref, onMounted, onUnmounted } from 'vue';
 
 const selectList = reactive({ list: [] });
 
 const cuurentSelect = ref('');
 
-const selectRef = ref(null);
+const selectRef = ref();
 
 const showSelectiion = ref(false);
 
@@ -31,6 +31,7 @@ const change = (item) => {
   cuurentSelect.value = item['name'];
 };
 
+// eslint-disable-next-line id-length
 const bodyCloseMenus = (e) => {
   if (!selectRef.value.contains(e.target)){
     showSelectiion.value = false;
@@ -50,9 +51,10 @@ onMounted(() => {
       selectList.list = response.data;
     })
     .catch((err) => console.error(err));
-  // return ()=>{
-  //   document.removeEventListener('click', bodyCloseMenus);
-  // };
+});
+
+onUnmounted(()=>{
+  document.removeEventListener('click', bodyCloseMenus);
 });
 
 const emit = defineEmits([ 'change' ]);

@@ -6,6 +6,7 @@ import './assets/style.css';
 import App from './App.vue';
 import SelectCoin from './pages/SelectCoin.vue';
 import 'highlight.js/styles/github.css';
+import '../src/components/theme/index.less';
 
 window.TokenInsightWidget = TokenInsightWidget;
 

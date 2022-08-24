@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import router from './routes/router';
 import './assets/css/common.css';
 import './assets/TokenInsightWidget.umd';
-import './assets/style.css';
+import './assets/index.css';
 import App from './App.vue';
 import 'highlight.js/styles/github.css';
 import SelectCoin from './pages/SelectCoin.vue';
