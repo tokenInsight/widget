@@ -16,6 +16,10 @@ const menus = [
       {
         zh: 'Price',
         path: '/docs/price'
+      },
+      {
+        zh: 'Watch',
+        path: '/docs/watch'
       }
     ]
   }

@@ -1,0 +1,84 @@
+@import '../../theme/var.less';
+
+
+.ti-price-container {
+    width: 282px;
+    height: 62px;
+    border: 1px solid rgba(123, 97, 255, 0.1);
+    border-radius: 5px;
+  
+    a {
+      padding: 13px;
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      text-decoration: none;
+      color: #000;
+    }
+  
+    .ti-price-wrapper {
+      display: flex;
+      height: 37px;
+  
+      .ti-price-logo {
+        width: 37px;
+        height: 37px;
+        border-radius: 50%;
+        margin-right: 10px;
+        border-radius: 50%;
+        display: block;
+        background: #ccc;
+      }
+  
+      .ti-price-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  
+        .symbol {
+          font-size: @font-18;
+          line-height: 18px;
+        }
+  
+        .abbreviate {
+          font-size: @font-14;
+          line-height: 14px;
+          color: #888888;
+        }
+      }
+    }
+  
+    .ti-coin-price-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-end;
+      height: 37px;
+  
+      .ti-coin-price {
+        font-size: @font-18;
+      }
+  
+      .ti-coin-changes {
+        font-size: @font-14;
+        display: flex;
+        justify-content: flex-end;
+  
+        span {
+          margin-left: 5px;
+        }
+  
+        span:last-child {
+          color: #888;
+        }
+      }
+    }
+  }
+  
+  .red {
+    color: @color-red;
+  }
+  
+  .green {
+    color: @color-green;
+  }

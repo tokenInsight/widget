@@ -1,12 +1,12 @@
 interface HttpRequestType {
   key: string;
-  get(url: string): Promise<Response>;
-  post<T>(url: string, data: T): Promise<Response>;
+  get<T>(url: string): Promise<Response<T>>;
+  post<T>(url: string, data: T): Promise<Response<T>>;
 }
 
-type Response = {
+type Response<T> = {
   status: Record<string, string | number>;
-  data: Record<string, any>;
+  data: T;
 };
 
 class HttpRequest implements HttpRequestType {
@@ -14,7 +14,7 @@ class HttpRequest implements HttpRequestType {
   constructor(key: string) {
     this.key = key;
   }
-  async get(url: string): Promise<Response> {
+  async get<T>(url: string): Promise<Response<T>> {
     const response = await fetch(url, {
       method: 'GET',
       headers: { Accept: 'application/json', TI_API_KEY: this.key }
@@ -22,7 +22,7 @@ class HttpRequest implements HttpRequestType {
     const resData = await response.json();
     return resData;
   }
-  async post<T>(url: string, data: T): Promise<Response> {
+  async post<T>(url: string, data: T): Promise<Response<T>> {
     const response = await fetch(url, {
       method: 'POST',
       headers: { Accept: 'application/json', TI_API_KEY: this.key },
