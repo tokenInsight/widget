@@ -1,13 +1,13 @@
 <template>
   <div class="selection-container" @click.stop="showSelectiion = true">
-    <div v-if="!cuurentSelect" class="selection-placeholder">
+    <div v-if="!currentSelect" class="selection-placeholder">
       Choose
     </div>
     <div v-else class="selection-content">
-      {{ cuurentSelect }}
+      {{ currentSelect }}
     </div>
     <ul v-show="showSelectiion" ref="selectRef" class="selection-body">
-      <li v-for="(item, index) in selectList.list" :key="index" :class="{ act: cuurentSelect === item['name'] }" @click.stop="change(item)">
+      <li v-for="(item, index) in selectList.list" :key="index" :class="{ act: currentSelect === item['name'] }" @click.stop="change(item)">
         {{ item['name'] }}
       </li>
     </ul>
@@ -19,16 +19,19 @@ import { reactive, ref, onMounted, onUnmounted } from 'vue';
 
 const selectList = reactive({ list: [] });
 
-const cuurentSelect = ref('');
+const currentSelect = ref('');
+
+const currentId = ref('bitcoin');
 
 const selectRef = ref();
 
 const showSelectiion = ref(false);
 
 const change = (item) => {
-  emit('change', item['id']);
+  emit('change', item['id'], currentId.value);
   showSelectiion.value = false;
-  cuurentSelect.value = item['name'];
+  currentSelect.value = item['name'];
+  currentId.value = item['id'];
 };
 
 // eslint-disable-next-line id-length

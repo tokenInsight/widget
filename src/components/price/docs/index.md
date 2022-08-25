@@ -1,8 +1,8 @@
 # CoinPrice
 
-这是一个币价格信息组件
+This is a Coin Price Component
 
-## 演示
+## Example
 
 ```js
 const widget = new TokenInsightWidget('cec31bc1-b8d9-4c93-8c38-aaf740793101');

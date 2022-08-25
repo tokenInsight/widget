@@ -34,30 +34,30 @@ module.exports = function transformMd(code) {
         ${htmlCodeText}
         ${
           jsCodeText && ` <div class='pre-js'>
-          <pre>${jsCodeText}</pre>
+          <PreCode :code='code'/>
         </div>`
         }
        
       </div>
     </template>
-    <script setup>
-    import { onMounted } from 'vue';
+    <script setup lang='ts'>
+    import { onMounted ,ref} from 'vue';
 
-onMounted(()=>{
-  ${eval(jsCode)}
-});
+    const code=ref(${JSON.stringify(jsCodeText)})
 
-${
-  jsCodeText && `
-  const change=(newVal)=>{
-    const js=${jsCode}.replace('bitcoin', newVal)
-    eval(js)
-  }`
-}
+    onMounted(()=>{
+      ${eval(jsCode)}
+    });
 
+    ${
+      jsCodeText && `
+      const change=(newVal,oldVal)=>{
+        const js=${jsCode}.replace('bitcoin', newVal)
+        code.value=code.value.replace(oldVal,newVal)
+        eval(js)
+      }`
+    }
 
-
- 
 </script>
   `;
   return docTemplate;
